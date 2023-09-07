@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
 
 const Model = mongoose.model("hour", {
-	temperatura: Number,
-	miasto: String,
-	opis: String,
+	city: String,
+	temp: String,
+	feels_like: String,
+	pressure: Number,
+	humidity: Number,
+	clouds: Number,
+	desc: String,
+	time: String,
 });
 
-export default mongoose;
+export default Model;

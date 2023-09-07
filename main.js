@@ -3,7 +3,18 @@ import mongoose from "mongoose";
 import Model from "./model.js";
 import fetchWeather from "./fetchWeather.js";
 
-const data = fetchWeather();
+const saveToMongo = async (data) => {
+	const newDocument = new Model(data);
+	await newDocument.save();
+	console.log("Zapisano nowe dane");
+};
+
+const dataInterval = async () => {
+	const data = await fetchWeather();
+	saveToMongo(data);
+};
+const intervalTime = 15 * 60 * 1000;
+setInterval(dataInterval, intervalTime);
 
 const app = express();
 
